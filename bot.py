@@ -1,1 +1,2 @@
-print("hellow world")
+def myprint():
+    return("hellow world")
