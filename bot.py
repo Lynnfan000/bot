@@ -1,2 +1,1 @@
-def myprint():
-    return("hellow world")
+print("hello world")
