@@ -1,4 +1,8 @@
-import sys
+from flask import Flask
 
-print("hello world")
-sys.stdout.flush()
+app = Flask(__name__)
+
+@app.route('/')
+def source():
+ html = 'Hello World!'
+ return html
