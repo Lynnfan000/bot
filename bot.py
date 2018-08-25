@@ -2,7 +2,7 @@ from flask import Flask, request, Response
 from kik import KikApi, Configuration
 from kik.messages import messages_from_json, TextMessage
 import os
-
+print(os.environ['PORT'])
 
 app = Flask(__name__)
 kik = KikApi("chinyeebot", "8ed8ec43-b3c6-45d9-85e4-0e4442d592a4")
@@ -30,4 +30,4 @@ def incoming():
 
 
 if __name__ == "__main__":
-    app.run(port=os.environ['PORT'], debug=True)
+    app.run(port=8080, debug=True)
