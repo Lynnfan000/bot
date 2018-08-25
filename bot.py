@@ -27,8 +27,10 @@ def incoming():
             ])
 
     return Response(status=200)
-print(os.environ['PORT'])
-if __name__ == "__main__":
+
+if True:
+	print(os.environ['PORT'])
     app.run(port=int(os.environ['PORT']), debug=True)
+
 
 
