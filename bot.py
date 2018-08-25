@@ -28,8 +28,7 @@ def incoming():
 
     return Response(status=200)
 
-if True:
-    app.run(port=int(os.environ['PORT']), debug=True)
-
+app.run(port=int(os.environ['PORT']), debug=True)
+print(os.environ['PORT'])
 
 
