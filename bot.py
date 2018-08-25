@@ -33,7 +33,7 @@ def incoming():
 
 print("will run")
 # if __name__ == "__main__":
-app.run(port=int(os.environ['PORT']), debug=True)
+app.run(port=int(os.environ['PORT']), debug=False)
 print("ran")
 
 
