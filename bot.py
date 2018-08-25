@@ -28,5 +28,7 @@ def incoming():
 
     return Response(status=200)
 if __name__ == "__main__":
-    app.run(port=8080, debug=True)
+    app.run(port=int(os.environ['PORT']), debug=True)
+print(os.environ['PORT'])
+
 
