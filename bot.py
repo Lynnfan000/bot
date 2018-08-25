@@ -27,8 +27,8 @@ def incoming():
             ])
 
     return Response(status=200)
-
+print(os.environ['PORT'])
 if __name__ == "__main__":
     app.run(port=int(os.environ['PORT']), debug=True)
-    print(os.environ['PORT'])
+
 
