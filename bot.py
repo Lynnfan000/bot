@@ -24,7 +24,7 @@ def incoming():
                     body=message.body
                 )
             ])
-            print(message.body)
+            print(type(message.body))
     return Response(status=200)
 
 if __name__ == "__main__":
