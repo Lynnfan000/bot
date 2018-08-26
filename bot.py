@@ -23,7 +23,13 @@ def incoming():
                         to=message.from_user,
                         chat_id=message.chat_id,
                         body="This is your lunch:")])
-    return Response(status=200)
+            else:
+                kik.send_messages([
+                TextMessage(
+                    to=message.from_user,
+                    chat_id=message.chat_id,
+                    body=m"I don't understand, please try again")])
+        return Response(status=200)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
