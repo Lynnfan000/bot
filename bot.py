@@ -28,7 +28,7 @@ def incoming():
                 TextMessage(
                     to=message.from_user,
                     chat_id=message.chat_id,
-                    body=m"I don't understand, please try again")])
+                    body="I don't understand, please try again")])
         return Response(status=200)
 
 if __name__ == "__main__":
