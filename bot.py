@@ -15,7 +15,7 @@ def incoming():
     if not kik.verify_signature(request.headers.get('X-Kik-Signature'), request.get_data()):
         return Response(status=403)
     messages = messages_from_json(request.json['messages'])
-    print(messages)
+    print(type(messages))
     for message in messages:
         if isinstance(message, TextMessage):
             if message.body.lower() == "rate lunch":
