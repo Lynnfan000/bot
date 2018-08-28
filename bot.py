@@ -23,7 +23,7 @@ def incoming():
                     TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Here is your lunch menu:")])
+                        body="Hi, I'm your rating lunch bot, if you wanna rate your lunch, type\"rate lunch\", if you wanna see the menu, type\"see menu\"")])
             elif message.body.lower() == "rate lunch":
                 kik.send_messages([
                     TextMessage(
