@@ -18,7 +18,7 @@ def incoming():
     print(type(messages))
     for message in messages:
         if isinstance(message, TextMessage):
-            if message.body.lower() == "hi"||"hello":
+            if message.body.lower() in ["hi", "hello", "hi!", "hello!", "hey"]:
                 kik.send_messages([
                     TextMessage(
                         to=message.from_user,
