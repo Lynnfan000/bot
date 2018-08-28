@@ -18,7 +18,13 @@ def incoming():
     print(type(messages))
     for message in messages:
         if isinstance(message, TextMessage):
-            if message.body.lower() == "rate lunch":
+            if message.body.lower() == "hi" | message.body.lower() == "hello":
+                kik.send_messages([
+                    TextMessage(
+                        to=message.from_user,
+                        chat_id=message.chat_id,
+                        body="Here is your lunch menu:")])
+            elif message.body.lower() == "rate lunch":
                 kik.send_messages([
                     TextMessage(
                         to=message.from_user,
