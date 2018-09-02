@@ -3,7 +3,6 @@ from kik import KikApi, Configuration
 from kik.messages import messages_from_json, TextMessage
 import os
 import sys
-import urlparse
 import mysql.connector
 
 
