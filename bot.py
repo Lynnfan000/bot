@@ -14,7 +14,12 @@ mydb = mysql.connector.connect(
   passwd="2c2f1c38",
   database="heroku_5a951cfac26923b"
 )
+mycursor = mydb.cursor()
 
+mycursor.execute("SHOW TABLES")
+
+for x in mycursor:
+  print(x)
 
 kik.set_configuration(Configuration(webhook="https://chinyeebot.herokuapp.com/incoming"))
 
