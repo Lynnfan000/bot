@@ -15,11 +15,14 @@ mydb = mysql.connector.connect(
   database="heroku_5a951cfac26923b"
 )
 mycursor = mydb.cursor()
+sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
+val = ("lynn", "fnkj ndsk")
+mycursor.execute(sql, val)
 
-mycursor.execute("SHOW TABLES")
+mydb.commit()
 
-for x in mycursor:
-  print(x)
+
+
 
 kik.set_configuration(Configuration(webhook="https://chinyeebot.herokuapp.com/incoming"))
 
