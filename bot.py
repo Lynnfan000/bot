@@ -62,11 +62,16 @@ def incoming():
         return Response(status=200)
 
 if __name__ == "__main__":
+    print("aaaaaaaaaaaaaa")
     port = int(os.environ.get('PORT', 5000))
+    print("bbbbbbbbbbbbbbbbb")
     app.run(host='0.0.0.0', port=port, debug=True)
+    print("fcccccccccccccccccccccc")
     mycursor = mydb.cursor()
+    print("dddddddddddddddd")
     sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
     val = ("lynn", "lalaalll")
+    print("eeeeeeeeeeeeeeeeeee")
     mycursor.execute(sql, val)
     mydb.commit()
     print("fffffffffffffffffffffff")
