@@ -68,5 +68,6 @@ if __name__ == "__main__":
     val = ("lynn", "fnkj ndsk")
     mycursor.execute(sql, val)
     mydb.commit()
+    print("first")
 
 
