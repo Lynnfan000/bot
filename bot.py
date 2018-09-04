@@ -14,13 +14,14 @@ mydb = mysql.connector.connect(
   passwd="2c2f1c38",
   database="heroku_5a951cfac26923b"
 )
+'''
 mycursor = mydb.cursor()
 sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
 val = ("lynn", "fnkj ndsk")
 mycursor.execute(sql, val)
 
 mydb.commit()
-
+'''
 
 
 
