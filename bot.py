@@ -63,5 +63,10 @@ def incoming():
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
+    mycursor = mydb.cursor()
+    sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
+    val = ("lynn", "fnkj ndsk")
+    mycursor.execute(sql, val)
+    mydb.commit()
 
 
