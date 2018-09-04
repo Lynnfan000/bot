@@ -59,21 +59,17 @@ def incoming():
                     to=message.from_user,
                     chat_id=message.chat_id,
                     body="I don't understand, you can type\"rate lunch\" to rate your lunch or \"see menu\" to see the menu")])
+                mycursor = mydb.cursor()
+                sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
+                val = ("lynn", message.body)
+                print(message.body)
+                mycursor.execute(sql, val)
+                mydb.commit()
         return Response(status=200)
 
 if __name__ == "__main__":
-    print("aaaaaaaaaaaaaa")
     port = int(os.environ.get('PORT', 5000))
-    print("bbbbbbbbbbbbbbbbb")
-    app.run(host='0.0.0.0', port=port, debug=True)
-    print("fcccccccccccccccccccccc")
-    mycursor = mydb.cursor()
-    print("dddddddddddddddd")
-    sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
-    val = ("lynn", "lalaalll")
-    print("eeeeeeeeeeeeeeeeeee")
-    mycursor.execute(sql, val)
-    mydb.commit()
-    print("fffffffffffffffffffffff")
+    app.run(host='0.0.0.0', port=port, debug=True) #everything will not run after this line
+    
 
 
