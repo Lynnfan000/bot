@@ -65,9 +65,9 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port, debug=True)
     mycursor = mydb.cursor()
     sql = "INSERT INTO comment (name, comment) VALUES (%s, %s)"
-    val = ("lynn", "fnkj ndsk")
+    val = ("lynn", "lalaalll")
     mycursor.execute(sql, val)
     mydb.commit()
-    print("first")
+    print("fffffffffffffffffffffff")
 
 
