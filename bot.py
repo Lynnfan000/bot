@@ -4,7 +4,7 @@ from kik.messages import messages_from_json, TextMessage
 import os
 import sys
 import mysql.connector
-import arrow
+from datetime import date
 
 
 
@@ -12,7 +12,7 @@ class mymenu:
     def __init__(self, date, menu):
         self.date = date
         self.menu = menu
-my_date=arrow.now().format('YYYY-MM-DD')
+my_date = str(date.today())
 
 
 app = Flask(__name__)
