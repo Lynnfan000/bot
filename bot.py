@@ -24,10 +24,10 @@ mydb = mysql.connector.connect(
   database="heroku_5a951cfac26923b"
 )
 mycursor = mydb.cursor()
-sql = "select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?"
-val = my_date
+#sql = "select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?"
+#val = my_date
 print(val)
-mycursor.execute(sql, val)
+mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?", my_date)
 my_menu=mycursor.fetchall()
 
 today = mymenu(my_date, my_menu)
