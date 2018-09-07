@@ -29,7 +29,7 @@ mycursor = mydb.cursor()
 mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id = menu.id where date = %(date)s", {'date': my_date})
 
 my_menu=mycursor.fetchall()
-print(my_menu[0])
+print(my_menu[0][0])
 
 today = mymenu(my_date, my_menu)
 
