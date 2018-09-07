@@ -12,7 +12,7 @@ class mymenu:
     def __init__(self, date, menu):
         self.date = date
         self.menu = menu
-my_date = str(date.today())
+my_date = date.today()
 
 
 app = Flask(__name__)
