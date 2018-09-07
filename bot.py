@@ -37,7 +37,6 @@ state=0
 print(state)
 @app.route('/incoming', methods=['POST'])
 def incoming():
-    state=0
     if not kik.verify_signature(request.headers.get('X-Kik-Signature'), request.get_data()):
         return Response(status=403)
     messages = messages_from_json(request.json['messages'])
@@ -45,7 +44,7 @@ def incoming():
         if isinstance(message, TextMessage):
             if state==1:
                 print("yessssssssssssssss")
-                sql = "INSERT INTO comment (date, menu, name, comment) VALUES (%s, %s, %s, %s)"
+                sql = "INSERT INTO comment (id, date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
                 val = (today.date, today.menu, message.from_user, message.body)
                 mycursor.execute(sql, val)
                 mydb.commit()
