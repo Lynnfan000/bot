@@ -69,6 +69,7 @@ def incoming():
                         chat_id=message.chat_id,
                         body="Here is your lunch menu: "+today.menu+"\nhow do you like your lunch?")])
                 state = 1
+                print(state)
             elif message.body.lower() == "see menu":
             	kik.send_messages([
                     TextMessage(
