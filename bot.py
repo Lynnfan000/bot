@@ -34,7 +34,7 @@ today = mymenu(my_date, my_menu)
 
 kik.set_configuration(Configuration(webhook="https://chinyeebot.herokuapp.com/incoming"))
 state=0
-
+print(state)
 @app.route('/incoming', methods=['POST'])
 def incoming():
     state=0
@@ -46,7 +46,7 @@ def incoming():
             if state==1:
                 print("yessssssssssssssss")
                 sql = "INSERT INTO comment (date, menu, name, comment) VALUES (%s, %s, %s, %s)"
-                val = (my_date, my_menu, message.from_user, message.body)
+                val = (today.date, today.menu, message.from_user, message.body)
                 mycursor.execute(sql, val)
                 mydb.commit()
                 kik.send_messages([
@@ -67,14 +67,14 @@ def incoming():
                     TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Here is your lunch menu: "+my_menu)])
+                        body="Here is your lunch menu: "+today.menu+"\nhow do you like your lunch?")])
                 state = 1
             elif message.body.lower() == "see menu":
             	kik.send_messages([
                     TextMessage(
                         to=message.from_user,
                         chat_id=message.chat_id,
-                        body="Here is your lunch menu: "+my_menu)])#need to communicate with database
+                        body="Here is your lunch menu: "+today.menu)])#need to communicate with database
             	state = 0
             else:
                 kik.send_messages([
@@ -87,7 +87,6 @@ def incoming():
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    state = 0
     app.run(host='0.0.0.0', port=port, debug=True) #everything will not run after this line
     
 
