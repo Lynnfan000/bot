@@ -26,7 +26,6 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 #sql = "select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?"
 #val = my_date
-print(val)
 mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?", my_date)
 my_menu=mycursor.fetchall()
 
