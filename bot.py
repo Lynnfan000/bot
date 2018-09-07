@@ -26,8 +26,8 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 #sql = "select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?"
 
-mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id = menu.id where lunch_info.date = %(date)s", {'date': my_date})
-#mycursor.execute("select menu from menu")
+mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id = menu.id where date = %(date)s", {'date': my_date})
+
 my_menu=mycursor.fetchall()
 
 today = mymenu(my_date, my_menu)
