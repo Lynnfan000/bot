@@ -37,6 +37,7 @@ state=0
 print(state)
 @app.route('/incoming', methods=['POST'])
 def incoming():
+    global state
     if not kik.verify_signature(request.headers.get('X-Kik-Signature'), request.get_data()):
         return Response(status=403)
     messages = messages_from_json(request.json['messages'])
