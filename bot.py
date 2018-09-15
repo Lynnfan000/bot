@@ -44,7 +44,6 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
             if state==1:
-                print("yessssssssssssssss")
                 sql = "INSERT INTO comment (id, date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
                 val = (today.date, today.menu, message.from_user, message.body)
                 mycursor.execute(sql, val)
