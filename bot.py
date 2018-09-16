@@ -1,6 +1,6 @@
 from flask import Flask, request, Response
 from kik import KikApi, Configuration
-from kik.messages import messages_from_json, TextMessage, SuggestedResponseKeyboard
+from kik.messages import messages_from_json, TextMessage, SuggestedResponseKeyboard, TextResponse
 import os
 import sys
 import mysql.connector
@@ -46,9 +46,11 @@ def incoming():
             b=TextMessage()
             b.keyboards.append(
                 SuggestedResponseKeyboard(
-                    to = 'aleem',
+                    to = message.from_user,
                     hidden = True,
-                    responses = [TextResponse('OK')]))
+                    responses = [TextResponse(
+                        body="aaa"
+                    )]))
             kik.send_messages([b])
             '''
             if state==1:
