@@ -14,7 +14,6 @@ class mymenu:
         self.menu = menu
 my_date = date.today()
 
-
 app = Flask(__name__)
 kik = KikApi("chinyeebot", "8ed8ec43-b3c6-45d9-85e4-0e4442d592a4")
 mydb = mysql.connector.connect(
@@ -28,7 +27,8 @@ mycursor = mydb.cursor()
 
 mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id = menu.id where date = %(date)s", {'date': my_date})
 
-my_menu=mycursor.fetchall()[0][0]
+my_menu=mycursor.fetchall()[0]
+print(my_menu)
 
 today = mymenu(my_date, my_menu)
 
