@@ -1,6 +1,6 @@
 from flask import Flask, request, Response
 from kik import KikApi, Configuration
-from kik.messages import messages_from_json, TextMessage
+from kik.messages import messages_from_json, TextMessage, SuggestedResponseKeyboard
 import os
 import sys
 import mysql.connector
@@ -43,6 +43,14 @@ def incoming():
     messages = messages_from_json(request.json['messages'])
     for message in messages:
         if isinstance(message, TextMessage):
+            b=TextMessage()
+            b.keyboards.append(
+                SuggestedResponseKeyboard(
+                    to = 'aleem',
+                    hidden = True,
+                    responses = [TextResponse('OK')]))
+            kik.send_messages([b])
+            '''
             if state==1:
                 sql = "INSERT INTO comment (date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
                 val = (today.date, today.menu_id, message.from_user, message.body)
@@ -83,6 +91,7 @@ def incoming():
                     chat_id=message.chat_id,
                     body="I don't understand, you can type\"rate lunch\" to rate your lunch or \"see menu\" to see the menu")])
                 state=0
+                '''
         return Response(status=200)
 
 if __name__ == "__main__":
