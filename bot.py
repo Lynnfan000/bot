@@ -44,7 +44,10 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
             print("aaaaa")
-            b=TextMessage()
+            b=TextMessage(
+                to=message.from_user,
+                body="lalalalal",
+                chat_id=message.chat_id)
             print("bbbbbb")
             b.keyboards.append(
                 SuggestedResponseKeyboard(
