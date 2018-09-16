@@ -9,9 +9,10 @@ from datetime import date
 
 
 class mymenu:
-    def __init__(self, date, menu):
+    def __init__(self, date, menu, menu_id):
         self.date = date
         self.menu = menu
+        self.menu_id = menu_id
 my_date = date.today()
 
 app = Flask(__name__)
@@ -25,12 +26,12 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 #sql = "select menu from menu join lunch_info on lunch_info.menu_id=menu.id where date=?"
 
-mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id = menu.id where date = %(date)s", {'date': my_date})
+mycursor.execute("select * from menu join lunch_info on lunch_info.menu_id = menu.id where date = %(date)s", {'date': my_date})
 
-my_menu=mycursor.fetchall()[0]
-
-
-today = mymenu(my_date, my_menu[0])
+a=mycursor.fetchall()[0]
+my_menu=a[1]
+my_menu_id = a[0]
+today = mymenu(my_date, my_menu, my_menu_id)
 
 kik.set_configuration(Configuration(webhook="https://chinyeebot.herokuapp.com/incoming"))
 state=0
@@ -44,7 +45,7 @@ def incoming():
         if isinstance(message, TextMessage):
             if state==1:
                 sql = "INSERT INTO comment (date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
-                val = (today.date, today.menu, message.from_user, message.body)
+                val = (today.date, today.menu_id, message.from_user, message.body)
                 mycursor.execute(sql, val)
                 mydb.commit()
                 kik.send_messages([
