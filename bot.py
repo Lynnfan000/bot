@@ -49,7 +49,7 @@ def incoming():
                     to = message.from_user,
                     hidden = True,
                     responses = [TextResponse("aaa")]))
-            kik.send_messages([b])
+           # kik.send_messages([b])
             '''
             if state==1:
                 sql = "INSERT INTO comment (date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
