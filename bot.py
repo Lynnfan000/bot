@@ -43,7 +43,7 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
             if state==1:
-                sql = "INSERT INTO comment (id, date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
+                sql = "INSERT INTO comment (date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
                 val = (today.date, today.menu, message.from_user, message.body)
                 mycursor.execute(sql, val)
                 mydb.commit()
