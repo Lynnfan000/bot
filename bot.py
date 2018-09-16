@@ -28,13 +28,12 @@ mycursor = mydb.cursor()
 mycursor.execute("select menu from menu join lunch_info on lunch_info.menu_id = menu.id where date = %(date)s", {'date': my_date})
 
 my_menu=mycursor.fetchall()[0]
-print(my_menu)
 
-today = mymenu(my_date, my_menu)
+
+today = mymenu(my_date, my_menu[0])
 
 kik.set_configuration(Configuration(webhook="https://chinyeebot.herokuapp.com/incoming"))
 state=0
-print(state)
 @app.route('/incoming', methods=['POST'])
 def incoming():
     global state
