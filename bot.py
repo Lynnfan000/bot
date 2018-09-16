@@ -48,9 +48,7 @@ def incoming():
                 SuggestedResponseKeyboard(
                     to = message.from_user,
                     hidden = True,
-                    responses = [TextResponse(
-                        body="aaa"
-                    )]))
+                    responses = [TextResponse("aaa")]))
             kik.send_messages([b])
             '''
             if state==1:
