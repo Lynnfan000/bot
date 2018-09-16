@@ -43,13 +43,16 @@ def incoming():
     messages = messages_from_json(request.json['messages'])
     for message in messages:
         if isinstance(message, TextMessage):
+            print("aaaaa")
             b=TextMessage()
+            print("bbbbbb")
             b.keyboards.append(
                 SuggestedResponseKeyboard(
                     to = message.from_user,
                     hidden = False,
                     responses = [TextResponse("aaa")]))
-           # kik.send_messages([b])
+            print("ccccccc")
+            kik.send_messages([b])
             '''
             if state==1:
                 sql = "INSERT INTO comment (date, menu_id, name, comment) VALUES (%s, %s, %s, %s)"
